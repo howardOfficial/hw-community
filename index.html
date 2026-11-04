@@ -172,6 +172,191 @@
             margin-top: 12px;
         }
 
+        /* Интерактивный список проектов */
+        .projects {
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .project-card {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 20px 22px;
+            border: 1px solid rgba(180, 140, 255, 0.24);
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(44, 27, 65, 0.92), rgba(23, 14, 35, 0.96));
+            color: #fff;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(180, 140, 255, 0.68);
+            box-shadow: 0 12px 34px rgba(91, 48, 145, 0.22);
+            background: linear-gradient(135deg, rgba(55, 33, 80, 0.98), rgba(27, 16, 42, 0.98));
+        }
+
+        .project-card-main {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .project-card-name {
+            font-size: clamp(1.25rem, 4vw, 1.65rem);
+            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: -0.035em;
+        }
+
+        .project-card-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #bca4df;
+            font-size: .88rem;
+            font-weight: 700;
+        }
+
+        .project-card-dot, .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #a77bff;
+            box-shadow: 0 0 12px rgba(167, 123, 255, .8);
+        }
+
+        .project-card-arrow {
+            display: grid;
+            place-items: center;
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            color: #d8c4ff;
+            background: rgba(180, 140, 255, .12);
+            font-size: 1.2rem;
+            transition: transform .25s ease, background .25s ease;
+        }
+
+        .project-card[aria-expanded="true"] .project-card-arrow {
+            transform: rotate(45deg);
+            background: rgba(180, 140, 255, .22);
+        }
+
+        .project-details {
+            margin-top: 14px;
+            padding: 22px;
+            border: 1px solid rgba(180, 140, 255, .3);
+            border-radius: 18px;
+            background:
+                radial-gradient(ellipse at 90% 0%, rgba(123, 77, 255, .13), transparent 48%),
+                rgba(25, 15, 38, .92);
+            text-align: left;
+            animation: details-in .35s ease both;
+        }
+
+        .project-details[hidden] {
+            display: none;
+        }
+
+        @keyframes details-in {
+            from { opacity: 0; transform: translateY(9px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .details-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .details-label, .countdown-caption {
+            color: #a99ab9;
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+        }
+
+        .details-close {
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(180, 140, 255, .22);
+            border-radius: 50%;
+            background: rgba(255,255,255,.04);
+            color: #d9c8f2;
+            font: inherit;
+            font-size: 1.35rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .details-close:hover {
+            background: rgba(180, 140, 255, .18);
+            transform: rotate(90deg);
+        }
+
+        .details-title {
+            margin-top: 12px;
+            font-size: clamp(1.65rem, 5vw, 2.15rem);
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: -.04em;
+        }
+
+        .details-status {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 11px;
+            color: #c4a7ff;
+            font-size: .92rem;
+            font-weight: 800;
+        }
+
+        .details-description {
+            margin-top: 19px;
+            color: #d0c6dc;
+            font-size: .96rem;
+            line-height: 1.75;
+        }
+
+        .details-description strong {
+            color: #fff;
+        }
+
+        .countdown-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 22px;
+            padding: 15px 17px;
+            border-radius: 13px;
+            background: rgba(123, 77, 255, .11);
+            border: 1px solid rgba(180, 140, 255, .15);
+        }
+
+        .countdown-caption {
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        .project-countdown {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+        }
+
         /* Социальные кнопки */
 
         .socials {
@@ -257,6 +442,18 @@
             .social-button:hover {
                 transform: none;
             }
+
+            .project-card, .project-card-arrow, .details-close {
+                transition: none;
+            }
+
+            .project-card:hover, .details-close:hover {
+                transform: none;
+            }
+
+            .project-details {
+                animation: none;
+            }
         }
 
         /* Мобильная адаптация */
@@ -277,6 +474,10 @@
 
             .social-button {
                 padding: 12px 24px;
+            }
+
+            .project-card, .project-details {
+                padding: 18px;
             }
 
             footer {
@@ -320,20 +521,44 @@
             инди-студия одного человека
         </p>
 
-        <section class="projects">
+        <section class="projects" aria-labelledby="projects-heading">
+            <h2 class="section-title" id="projects-heading">Мои проекты</h2>
 
-            <h2 class="section-title">Мои проекты</h2>
+            <button class="project-card" id="wave-project-trigger"
+                    type="button" aria-expanded="false" aria-controls="wave-project-details">
+                <span class="project-card-main">
+                    <span class="project-card-name">Wave of Power</span>
+                    <span class="project-card-meta">
+                        <span class="project-card-dot" aria-hidden="true"></span>
+                        В разработке
+                    </span>
+                </span>
+                <span class="project-card-arrow" aria-hidden="true">↗</span>
+            </button>
 
-            <h3 class="project-name">Wave of Power</h3>
-
-            <p class="project-status">
-                в разработке
-            </p>
-
-            <p class="project-countdown" id="countdown" role="timer" aria-live="off" aria-label="Обратный отсчёт до альфа-тестирования">
-                До альфы: <span id="countdown-value">45 дней</span>
-            </p>
-
+            <div class="project-details" id="wave-project-details" hidden>
+                <div class="details-topline">
+                    <span class="details-label">ИНФОРМАЦИЯ О ПРОЕКТЕ</span>
+                    <button class="details-close" id="wave-project-close" type="button"
+                            aria-label="Закрыть информацию о проекте">×</button>
+                </div>
+                <h3 class="details-title">Wave of Power</h3>
+                <p class="details-status">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    В разработке
+                </p>
+                <p class="details-description">
+                    <strong>Wave of Power</strong> — мобильный экшен 3 на 3 с короткими боями по 2–3 минуты.
+                    Танки, стрелки, хилеры, ассасины. Кейсы, прокачка, карты.
+                </p>
+                <div class="countdown-panel">
+                    <span class="countdown-caption">До альфа-тестирования</span>
+                    <span class="project-countdown" id="countdown" role="timer"
+                          aria-live="off" aria-label="Обратный отсчёт до альфа-тестирования">
+                        <span id="countdown-value">Загрузка…</span>
+                    </span>
+                </div>
+            </div>
         </section>
 
         <nav class="socials" aria-label="Социальные сети">
@@ -374,10 +599,30 @@
 
     <script>
         (() => {
+            const trigger = document.getElementById('wave-project-trigger');
+            const details = document.getElementById('wave-project-details');
+            const closeButton = document.getElementById('wave-project-close');
+
+            const setDetailsOpen = (isOpen) => {
+                details.hidden = !isOpen;
+                trigger.setAttribute('aria-expanded', String(isOpen));
+                if (isOpen) {
+                    details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            };
+
+            trigger.addEventListener('click', () => {
+                setDetailsOpen(details.hidden);
+            });
+
+            closeButton.addEventListener('click', () => {
+                setDetailsOpen(false);
+                trigger.focus();
+            });
+
             // Дата альфа-тестирования: 19 декабря 2026 года.
             const targetDate = new Date('2026-12-19T00:00:00');
             const output = document.getElementById('countdown-value');
-            if (!output) return;
 
             const plural = (number, forms) => {
                 const n = Math.abs(number) % 100;
@@ -391,13 +636,14 @@
             const updateCountdown = () => {
                 const remaining = targetDate.getTime() - Date.now();
                 if (remaining <= 0) {
-                    output.textContent = 'альфа уже должна была начаться';
+                    output.textContent = 'Альфа-тестирование должно было начаться';
                     return;
                 }
 
                 const days = Math.floor(remaining / 86400000);
                 const hours = Math.floor((remaining % 86400000) / 3600000);
                 const minutes = Math.floor((remaining % 3600000) / 60000);
+
                 output.textContent =
                     `${days} ${plural(days, ['день', 'дня', 'дней'])} · ` +
                     `${hours} ч · ${minutes} мин`;
