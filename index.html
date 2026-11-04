@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0616">
+    <meta name="description" content="hw community — инди-студия одного человека. Разработка Wave of Power.">
+
+    <title>hw community</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    ellipse at 50% 40%,
+                    rgba(83, 44, 126, 0.13) 0%,
+                    transparent 55%
+                ),
+                linear-gradient(145deg, #0d0616, #0a0512);
+
+            color: #ffffff;
+            font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        main {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Главный заголовок */
+
+        .logo {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -0.055em;
+            line-height: 1.1;
+        }
+
+        /* SVG-волна */
+
+        .wave {
+            width: 100%;
+            max-width: 320px;
+            height: 35px;
+            margin: 22px 0 12px;
+        }
+
+        .wave path {
+            fill: none;
+            stroke: #b48cff;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        /* Подзаголовок */
+
+        .subtitle {
+            color: #8a8398;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        /* Проекты */
+
+        .projects {
+            margin-top: 95px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            color: #c9a8ff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .project-name {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+        }
+
+        .project-status {
+            color: #b48cff;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .project-countdown {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        /* Социальные кнопки */
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 42px;
+        }
+
+        .social-button {
+            display: inline-block;
+            background: #7b4dff;
+            color: #ffffff;
+
+            padding: 12px 28px;
+            border-radius: 999px;
+
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 800;
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .social-button:hover {
+            background: #956fff;
+            transform: translateY(-3px);
+        }
+
+        .social-button:focus-visible {
+            outline: 2px solid #c9a8ff;
+            outline-offset: 4px;
+        }
+
+        /* Копирайт */
+
+        footer {
+            margin-top: 75px;
+            color: #62596f;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Мобильная адаптация */
+
+        @media (max-width: 480px) {
+            body {
+                padding: 35px 18px;
+            }
+
+            .projects {
+                margin-top: 75px;
+            }
+
+            .socials {
+                margin-top: 35px;
+                gap: 12px;
+            }
+
+            .social-button {
+                padding: 12px 24px;
+            }
+
+            footer {
+                margin-top: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <h1 class="logo">hw community</h1>
+
+        <svg
+            class="wave"
+            viewBox="0 0 320 35"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+        >
+            <path d="
+                M 0 18
+                C 30 18, 35 5, 65 5
+                S 100 30, 130 30
+                S 170 5, 200 5
+                S 235 30, 265 30
+                S 290 18, 320 18
+            "/>
+        </svg>
+
+        <p class="subtitle">
+            инди-студия одного человека
+        </p>
+
+        <section class="projects">
+
+            <h2 class="section-title">Мои проекты</h2>
+
+            <h3 class="project-name">Wave of Power</h3>
+
+            <p class="project-status">
+                в разработке
+            </p>
+
+            <p class="project-countdown">
+                до альфы: 45 дней
+            </p>
+
+        </section>
+
+        <nav class="socials" aria-label="Социальные сети">
+
+            <a
+                class="social-button"
+                href="https://t.me/hw_gamedev"
+                target="_blank"
+                rel="noopener"
+            >
+                Telegram
+            </a>
+
+            <a
+                class="social-button"
+                href="https://youtube.com/@howardOriginal"
+                target="_blank"
+                rel="noopener"
+            >
+                YouTube
+            </a>
+
+        </nav>
+
+    </main>
+
+    <footer>
+        © 2026 hw community
+    </footer>
+
+</body>
+</html>
+
