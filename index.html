@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0d0616">
-    <meta name="description" content="hw community — инди-студия одного человека. Разработка Wave of Power.">
+    <meta name="description" content="hw community — независимая инди-студия. Разработка Wave of Power.">
+    <meta name="author" content="hw community">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="hw community — независимая игровая студия">
+    <meta property="og:description" content="Создаём игры и собственные игровые миры. Следите за разработкой Wave of Power.">
+    <meta property="og:site_name" content="hw community">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="hw community — независимая игровая студия">
+    <meta name="twitter:description" content="Следите за разработкой Wave of Power.">
 
     <title>hw community</title>
 
@@ -13,8 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Favicon (заглушка: фиолетовый квадрат с hw) -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237b4dff'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial,sans-serif' font-size='28' font-weight='900' fill='white' text-anchor='middle' dominant-baseline='middle'%3Ehw%3C/text%3E%3C/svg%3E">
+    <!-- Фирменный favicon hw community -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='25%25'%3E%3Cstop stop-color='%23a77bff'/%3E%3Cstop offset='1' stop-color='%23502bb5'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='%230d0616'/%3E%3Crect x='3' y='3' width='58' height='58' rx='15' fill='url(%23g)'/%3E%3Cpath d='M15 19v26h7V34h9v11h7V19h-7v9h-9v-9zm27 0v26h7V34h2c6 0 9-3 9-8s-3-7-9-7z' fill='white'/%3E%3C/svg%3E">
 
     <style>
         * {
@@ -56,6 +65,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            animation: rise-in 0.8s cubic-bezier(.2,.75,.25,1) both;
+        }
+
+        @keyframes rise-in {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        :focus-visible {
+            outline: 3px solid #d4baff;
+            outline-offset: 4px;
+            border-radius: 6px;
+        }
+
+        a {
+            -webkit-tap-highlight-color: rgba(180, 140, 255, 0.22);
         }
 
         /* Главный заголовок */
@@ -79,12 +104,23 @@
 
         .wave path {
             fill: none;
-            stroke: #b48cff;
-            stroke-width: 2;
             stroke-linecap: round;
+            pointer-events: none;
+        }
+
+        .wave-main {
+            stroke: #c7a7ff;
+            stroke-width: 2.4;
             stroke-dasharray: 400;
             stroke-dashoffset: 400;
-            animation: draw 2s ease-out forwards;
+            animation: draw 2s ease-out 0.2s forwards;
+        }
+
+        .wave-glow {
+            stroke: #9b6cff;
+            stroke-width: 7;
+            opacity: 0.2;
+            filter: blur(4px);
         }
 
         @keyframes draw {
@@ -94,7 +130,7 @@
         /* Подзаголовок */
 
         .subtitle {
-            color: #8a8398;
+            color: #aaa1b7;
             font-size: 0.9rem;
             font-weight: 600;
             letter-spacing: 0.03em;
@@ -148,7 +184,11 @@
         }
 
         .social-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 46px;
             background: #7b4dff;
             color: #ffffff;
 
@@ -174,7 +214,14 @@
         }
 
         .social-button:active {
-            transform: translateY(-1px);
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .social-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            flex: 0 0 auto;
         }
 
         .social-button:focus-visible {
@@ -194,9 +241,13 @@
         /* Уважение к настройкам пользователя */
 
         @media (prefers-reduced-motion: reduce) {
-            .wave path {
+            .wave-main {
                 animation: none;
                 stroke-dashoffset: 0;
+            }
+
+            main {
+                animation: none;
             }
 
             .social-button {
@@ -247,13 +298,21 @@
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
         >
-            <path d="
+            <path class="wave-main" d="
                 M 0 18
-                C 30 18, 35 5, 65 5
-                S 100 30, 130 30
-                S 170 5, 200 5
-                S 235 30, 265 30
-                S 290 18, 320 18
+                C 25 18, 35 3, 65 5
+                S 102 31, 132 29
+                S 171 2, 201 5
+                S 238 31, 267 29
+                S 296 14, 320 18
+            "/>
+            <path class="wave-glow" d="
+                M 0 18
+                C 25 18, 35 3, 65 5
+                S 102 31, 132 29
+                S 171 2, 201 5
+                S 238 31, 267 29
+                S 296 14, 320 18
             "/>
         </svg>
 
@@ -271,8 +330,8 @@
                 в разработке
             </p>
 
-            <p class="project-countdown">
-                до альфы: 45 дней
+            <p class="project-countdown" id="countdown" role="timer" aria-live="off" aria-label="Обратный отсчёт до альфа-тестирования">
+                До альфы: <span id="countdown-value">45 дней</span>
             </p>
 
         </section>
@@ -284,7 +343,11 @@
                 href="https://t.me/hw_gamedev"
                 target="_blank"
                 rel="noopener"
+                aria-label="Открыть Telegram hw gamedev в новой вкладке"
             >
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21.6 4.3 18.4 19c-.24 1.04-.86 1.3-1.74.8l-4.82-3.55-2.32 2.23c-.26.26-.48.48-.98.48l.35-4.9 8.92-8.06c.39-.35-.08-.55-.6-.2L6.2 12.7l-4.7-1.47c-1.02-.32-1.04-1.02.22-1.52L20.1 2.8c.85-.31 1.6.2 1.5 1.5Z"/>
+                </svg>
                 Telegram
             </a>
 
@@ -293,7 +356,11 @@
                 href="https://youtube.com/@howardOriginal"
                 target="_blank"
                 rel="noopener"
+                aria-label="Открыть YouTube-канал howardOriginal в новой вкладке"
             >
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.7V8.3l6.3 3.7-6.3 3.7Z"/>
+                </svg>
                 YouTube
             </a>
 
@@ -305,5 +372,40 @@
         © 2026 hw community
     </footer>
 
+    <script>
+        (() => {
+            // Дата альфа-тестирования: 19 декабря 2026 года.
+            const targetDate = new Date('2026-12-19T00:00:00');
+            const output = document.getElementById('countdown-value');
+            if (!output) return;
+
+            const plural = (number, forms) => {
+                const n = Math.abs(number) % 100;
+                const last = n % 10;
+                if (n > 10 && n < 20) return forms[2];
+                if (last > 1 && last < 5) return forms[1];
+                if (last === 1) return forms[0];
+                return forms[2];
+            };
+
+            const updateCountdown = () => {
+                const remaining = targetDate.getTime() - Date.now();
+                if (remaining <= 0) {
+                    output.textContent = 'альфа уже должна была начаться';
+                    return;
+                }
+
+                const days = Math.floor(remaining / 86400000);
+                const hours = Math.floor((remaining % 86400000) / 3600000);
+                const minutes = Math.floor((remaining % 3600000) / 60000);
+                output.textContent =
+                    `${days} ${plural(days, ['день', 'дня', 'дней'])} · ` +
+                    `${hours} ч · ${minutes} мин`;
+            };
+
+            updateCountdown();
+            window.setInterval(updateCountdown, 60000);
+        })();
+    </script>
 </body>
 </html>
